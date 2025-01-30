@@ -1,23 +1,23 @@
 /**
- * Validates a given matrix to determine if it is a Latin Square
- * @param matrix The matrix to validate
- * @returns True if the matrix is a Latin Square, false otherwise
+ * Validates a given grid to determine if it is a Latin Square
+ * @param grid The grid to validate
+ * @returns True if the grid is a Latin Square, false otherwise
  * 
  */
-const validateLatinSquare = (matrix: number[][]): boolean => {
-    const numberOfRows = matrix.length;
+const validateLatinSquare = (grid: number[][]): boolean => {
+    const numberOfRows = grid.length;
 
     // Validate rows are of equal length to the height
     for (let i = 0; i < numberOfRows; i++) {
-        if (matrix[i].length !== numberOfRows) {
+        if (grid[i].length !== numberOfRows) {
             return false;
         }
     }
 
     // Validate each row and column has no duplicates and contains 1:N.
     for (let i = 0; i < numberOfRows; i++) {
-        const currentRow = matrix[i];
-        const currentColumn = matrix.map(row => row[i]);
+        const currentRow = grid[i];
+        const currentColumn = grid.map(row => row[i]);
 
         if (!isValidLatinSquareRow(currentRow) || !isValidLatinSquareRow(currentColumn)) {
             return false;
